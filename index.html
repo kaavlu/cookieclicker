@@ -23,21 +23,46 @@
 </head>
 <body>
     <h1>Cookie Clicker Game</h1>
-    <p>Click the button to increase your score!</p>
-    <button id="cookie-button">Click me!</button>
-    <p id="score">Score: <span id="scoreValue">0</span></p>
+    <div id="sign-in">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" placeholder="Your Name">
+        <button id="start-button">Start Game</button>
+    </div>
+    <div id="game" style="display: none;">
+        <p>Hello, <span id="player-name"></span>! Your score is <span id="scoreValue">0</span>.</p>
+        <button id="cookie-button">Click me!</button>
+        <button id="reset-button">Reset Game</button>
+    </div>
 
     <script>
         let score = 0;
+        let playerName = "";
 
         // Function to update the score on the page
         function updateScore() {
             document.getElementById("scoreValue").innerText = score;
         }
 
-        // Event listener for clicking the button
+        // Show the game and player's name
+        function showGame() {
+            playerName = document.getElementById("name").value;
+            document.getElementById("player-name").innerText = playerName;
+            document.getElementById("sign-in").style.display = "none";
+            document.getElementById("game").style.display = "block";
+        }
+
+        // Event listener for starting the game
+        document.getElementById("start-button").addEventListener("click", showGame);
+
+        // Event listener for clicking the cookie
         document.getElementById("cookie-button").addEventListener("click", function() {
             score++;
+            updateScore();
+        });
+
+        // Event listener for resetting the game
+        document.getElementById("reset-button").addEventListener("click", function() {
+            score = 0;
             updateScore();
         });
     </script>
