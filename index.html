@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Clicker Game</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        #cookie-button {
+            background-color: #F7941D; /* Button background color */
+            color: white; /* Button text color */
+            font-size: 24px;
+            padding: 20px 40px;
+            border: none;
+            cursor: pointer;
+        }
+        #score {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cookie Clicker Game</h1>
+    <p>Click the button to increase your score!</p>
+    <button id="cookie-button">Click me!</button>
+    <p id="score">Score: <span id="scoreValue">0</span></p>
+
+    <script>
+        let score = 0;
+
+        // Function to update the score on the page
+        function updateScore() {
+            document.getElementById("scoreValue").innerText = score;
+        }
+
+        // Event listener for clicking the button
+        document.getElementById("cookie-button").addEventListener("click", function() {
+            score++;
+            updateScore();
+        });
+    </script>
+</body>
+</html>
